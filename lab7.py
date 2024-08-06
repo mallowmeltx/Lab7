@@ -25,8 +25,24 @@ or prevent any errors from happening at all!
 
 def longest_chain(lst: list[int]) -> int:
     """
-    Your longest_chain function from last week, make sure this works properly
-    before proceeding with the rest of the lab!
+   Given a list of integers, return the length of the longest chain of 1's
+    that start from the beginning.
+
+    You MUST use a while loop for this, and are not allowed to use a for loop.
+
+    Hint: A good way to start is to define a stopping condition, and have a
+    variable that keeps track of how many 1's you've seen thus far, if any.
+
+    Precondition: <lst> will only contain the integers 1 and 0.
+
+    >>> longest_chain([1, 1, 0])
+    2
+    >>> longest_chain([0, 1, 1])
+    2
+    >>> longest_chain([1, 0, 1, 1])
+    2
+    >>> longest_chain([1, 0, 1, 1, 1, 0, 1, 1])
+    3
     """
     iteration_count = 0
     counter = 0
@@ -35,16 +51,12 @@ def longest_chain(lst: list[int]) -> int:
     while iteration_count < len(lst):
         if 1 == lst[iteration_count]:
             counter += 1
-        # this only happens when the program iterate over 0
         else:
-            # add the counter to a list to compare all counters later
             counter_compare.append(counter)
-            # reset counter for the next chain
             counter = 0
 
         iteration_count += 1
-    # add the last counter if the list ends in 1
-    # since counter is only appended if it iterates into 0
+      
     counter_compare.append(counter)
 
     return max(counter_compare)
